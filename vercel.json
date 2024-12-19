@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/wow.html"
+      },
+     
+      {
+        "source": "/lfeng1",
+        "destination": "/index.html"
+      }
+      
+      
+    ]
+  }
+  
