@@ -337,21 +337,32 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(`URL: ${url}, Parameter: ${paramName}`);
 
     const clickid = getQueryParam(url, paramName);
-    const dynamicUrl = document.getElementById("dynamicUrl");
-    const dynamicUrl1 = document.getElementById("dynamicUrl1");
-    const dynamicUrl2 = document.getElementById("dynamicUrl2");
-    const dynamicUrl4 = document.getElementById("dynamicUrl4");
-    const dynamicUrl5 = document.getElementById("dynamicUrl5");
-    const dynamicUrl6 = document.getElementById("dynamicUrl6");
-    console.log(dynamicUrl1, dynamicUrl2, dynamicUrl6);
-    const redirectUrl = `https://hop.clickbank.net/?affiliate=ctop2&vendor=thelld&cbpage=tsl&affop=1&extclid=${clickid}&tid=${clickid}&vtid=${clickid}`;
-    dynamicUrl.setAttribute("href", redirectUrl);
-    dynamicUrl1.setAttribute("href", redirectUrl);
-    dynamicUrl2.setAttribute("href", redirectUrl);
-    dynamicUrl4.setAttribute("href", redirectUrl);
-    dynamicUrl5.setAttribute("href", redirectUrl);
-    dynamicUrl6.setAttribute("href", redirectUrl);
-    console.log(`Value of '${clickid}':`, clickid);
+
+// List of element IDs to update
+const elementIds = [
+    "dynamicUrl",
+    "dynamicUrl1",
+    "dynamicUrl2",
+    "dynamicUrl4",
+    "dynamicUrl5",
+    "dynamicUrl6",
+];
+
+const redirectUrl = `https://hop.clickbank.net/?affiliate=ctop2&vendor=thelld&cbpage=tsl&affop=1&extclid=${clickid}&tid=${clickid}&vtid=${clickid}`;
+
+// Update href for each element
+elementIds.forEach((id) => {
+    const element = document.getElementById(id);
+    if (element) {
+        element.setAttribute("href", redirectUrl);
+        console.log(`Updated href for #${id}:`, redirectUrl);
+    } else {
+        console.warn(`Element with ID "${id}" not found.`);
+    }
+});
+
+console.log(`Value of 'clickid':`, clickid);
+
 });
 </script>
 
