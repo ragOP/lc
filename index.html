@@ -27,24 +27,21 @@
   // Fetch 's1' value from the URL
   const clickid = getQueryParam('s1');
 
-  if (clickid) {
-      console.log(`Click ID detected: ${clickid}`);
+  // Function to handle the redirection dynamically
+  function redirectToDynamicLink() {
+      if (clickid) {
+          console.log(`Click ID detected: ${clickid}`);
 
-      // Get the target div by its ID
-      const dynamicLink = document.getElementById('dynamicLink');
-      
-      // Update the onclick attribute with the dynamic clickid
-      if (dynamicLink) {
-          let originalOnclick = dynamicLink.getAttribute('onclick');
-          let updatedOnclick = originalOnclick.replace(/{clickid}/g, clickid);
-          dynamicLink.setAttribute('onclick', updatedOnclick);
+          // Generate the updated URL with the clickid
+          const dynamicUrl = `https://hop.clickbank.net/?affiliate=ctop2&vendor=thelld&cbpage=tsl&affop=1&extclid=${clickid}&tid=${clickid}&vtid=${clickid}`;
 
-          console.log(`Updated onclick: ${updatedOnclick}`);
+          console.log(`Redirecting to: ${dynamicUrl}`);
+
+          // Redirect to the dynamically generated URL
+          window.location.href = dynamicUrl;
       } else {
-          console.log('No element found with ID "dynamicLink".');
+          console.log('No clickid found in the URL. Redirection skipped.');
       }
-  } else {
-      console.log('No clickid found in the URL.');
   }
 </script>
 <meta name="robots" content="noindex"><!-- Global site tag (gtag.js) - Google Ads: 11485096639 -->
@@ -206,7 +203,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          data-gp-style="" 
          data-gp-component-id="s3N3QYMYlM" 
          id="dynamicLink"
-         onclick="window.location.href='https://hop.clickbank.net/?affiliate=ctop2&vendor=thelld&cbpage=tsl&affop=1&extclid={clickid}&tid={clickid}&vtid={clickid}'">
+         onclick="redirectToDynamicLink()">
         Watch Now2
     </div>
 
